@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
+import Pictures from "./Components/Pictures";
+import Signup from "./Components/Signup";
+import LoginUser from "./Components/LoginUser";
+import Display from "./Components/Display";
 
 function App() {
+  const [user, setUser] = useState();
+  const [loggedIn, setloggedIn] = useState();
+  const [showUsers, setShowUsers] = useState(false);
+  const [users, setUsers] = useState([""]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Signup setter={setUser} />
+      <LoginUser setter={setloggedIn} />
+      <h1>{user}</h1>
+      <h1>{loggedIn}</h1>
+      <Display setter={setUsers} />
+      <h1>{users}</h1>
+      <div>
+        <div />
+      </div>
     </div>
   );
 }
