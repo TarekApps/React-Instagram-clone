@@ -29,7 +29,7 @@ export const login = async (username, password, setter) => {
     });
     const data = await response.json();
     console.log(data);
-    setter(data.msg.username);
+    setter(data.user);
   } catch (error) {
     console.log(error);
   }
@@ -61,6 +61,24 @@ export const deleteUser = async (username, password, setter) => {
     const data = await response.json();
     console.log(data.user);
     console.log("User Deleted");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateUser = async (username, newUsername, setter) => {
+  try {
+    const response = await fetch("http://localhost:5000/user", {
+      headers: { "Content-Type": "application/json" },
+      method: "PATCH",
+      body: JSON.stringify({
+        username: username,
+        newUsername: newUsername,
+      }),
+    });
+    const data = await response.json();
+    console.log(data.msg);
+    setter(data.newUsername);
   } catch (error) {
     console.log(error);
   }

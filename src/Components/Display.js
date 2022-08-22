@@ -1,11 +1,10 @@
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 import { displayUsers } from "../utils";
 
-const Display = ({ setter }) => {
-  const [list, setList] 
-
+const Display = () => {
+  const [list, setList] = useState()
   useEffect(() => {
-    displayUsers(setter);
+    displayUsers(setList);
   }, []);
 
   
@@ -13,6 +12,7 @@ const Display = ({ setter }) => {
   return (
     <div>
       <div>
+        <h1>{list}</h1>
       </div>
     </div>
   );
